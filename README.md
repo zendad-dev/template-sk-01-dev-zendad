@@ -1,38 +1,49 @@
-# create-svelte
+# template-sk-01-dev-zendad
+This repository --01 ... contains the initial Sveltekit skeleton project setup with answers to Yes for Eslint, Typescript, Prettier, and Playwright. That's just the first step.  There are several others, listed below, until the template is complete.
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+To summarize:
+1.  Create Sveltekit Project
+2.  Add TailwindCSS
+3.  Add Prettier plugin for TailwindCSS (necessites the removal of the default Prettier Plugin Svelte)
+4.  Add Node adapter
+5.  Add Lib directory and other standard Project files
 
-## Creating a project
+-------
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
+1.  From https://kit.svelte.dev/docs/introduction#before-we-begin:
 npm create svelte@latest my-app
-```
+cd my-app
+npm install
 
-## Developing
+2.  From https://tailwindcss.com/docs/guides/sveltekit:
+npm install -D tailwindcss postcss autoprefixer svelte-preprocess
+npx tailwindcss init tailwind.config.cjs -p
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+3a.  From https://github.com/tailwindlabs/prettier-plugin-tailwindcss:
+npm install -D prettier prettier-plugin-tailwindcss
+Create prettier-config.js in the root of the project directory and add the following code:
 
-```bash
-npm run dev
+// prettier.config.js
+module.exports = {
+  plugins: [require('prettier-plugin-tailwindcss')],
+}
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+- or - From https://stackoverflow.com/questions/63266052/vscode-change-vertical-guide-line-indentation/69124944#69124944: 
 
-## Building
+module.exports = {
+    tabWidth: 4,
+    tabs: true,
+    // other options...
+}
 
-To create a production version of your app:
+3b. Remove default Prettier Plugin Svelte
+npm uninstall prettier-plugin-svelte
 
-```bash
-npm run build
-```
+4.  From https://www.npmjs.com/package/@sveltejs/adapter-node:
+npm i -D @sveltejs/adapter-node
+change svelte-config.js auto to node, follow other instructions. 
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+5.  From https://kit.svelte.dev/docs/project-structure and from https://tailwindcss.com/docs/guides/sveltekit:
+Add Lib directory 
+Add __layout.svelte
+etc....
